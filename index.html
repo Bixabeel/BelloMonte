@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0a1f14" />
+  <meta name="description" content="Apartamento en alquiler en Residencial Bello Monte, San Ramón de La Unión, Cartago. Naturaleza, seguridad, amplitud y vista panorámica por ₡550.000 mensuales." />
+  <meta property="og:title" content="Apartamento en Residencial Bello Monte — Naturaleza, seguridad y vista" />
+  <meta property="og:description" content="Un residencial cerrado con una sola entrada y salida, cámaras 24/7, parque verde y una propiedad amplia con vista privilegiada." />
+  <meta property="og:type" content="website" />
+
+  <title>Residencial Bello Monte — Apartamento en alquiler</title>
+
+  <!-- Preload crítico -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300&family=Inter:wght@300;400;500;600&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300&family=Inter:wght@300;400;500;600&display=swap" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js" defer></script>
+</head>
+<body>
+
+  <!-- ========== LOADER ========== -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__inner">
+      <span class="loader__word">Bello</span>
+      <span class="loader__word">Monte</span>
+    </div>
+    <div class="loader__bar"><div class="loader__fill"></div></div>
+  </div>
+
+  <!-- ========== CURSOR CUSTOM (solo desktop) ========== -->
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <div class="cursor__dot"></div>
+    <div class="cursor__ring"></div>
+  </div>
+
+  <!-- ========== PROGRESS BAR ========== -->
+  <div class="progress" id="progress" aria-hidden="true">
+    <div class="progress__fill" id="progressFill"></div>
+  </div>
+
+  <!-- ========== NAV ========== -->
+  <nav class="nav" id="nav" aria-label="Navegación principal">
+    <a href="#hero" class="nav__brand" data-scroll>
+      <span class="nav__mark"></span>
+      <span class="nav__brand-text">Bello Monte</span>
+    </a>
+    <ul class="nav__chapters" id="navChapters">
+      <li><a href="#entorno" data-scroll data-chapter="1">Acceso</a></li>
+      <li><a href="#seguridad" data-scroll data-chapter="2">Seguridad</a></li>
+      <li><a href="#naturaleza" data-scroll data-chapter="3">Naturaleza</a></li>
+      <li><a href="#vida" data-scroll data-chapter="4">Amenidades</a></li>
+      <li><a href="#ubicacion" data-scroll data-chapter="5">Ubicación</a></li>
+      <li><a href="#propiedad" data-scroll data-chapter="6">Apartamento</a></li>
+      <li><a href="#contacto" data-scroll data-chapter="7">Contacto</a></li>
+    </ul>
+    <a href="#contacto" class="nav__cta" data-scroll>Agendar visita</a>
+    <button class="nav__burger" id="navBurger" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ========== MENU MÓVIL ========== -->
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <ul>
+      <li><a href="#entorno" data-scroll>01 — Acceso</a></li>
+      <li><a href="#seguridad" data-scroll>02 — Seguridad</a></li>
+      <li><a href="#naturaleza" data-scroll>03 — Naturaleza</a></li>
+      <li><a href="#vida" data-scroll>04 — Amenidades</a></li>
+      <li><a href="#ubicacion" data-scroll>05 — Ubicación</a></li>
+      <li><a href="#propiedad" data-scroll>06 — El apartamento</a></li>
+      <li><a href="#contacto" data-scroll>07 — Contacto</a></li>
+    </ul>
+  </div>
+
+  <main>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero" id="hero" aria-label="Introducción cinematográfica">
+      <div class="hero__media">
+        <img class="hero__image" src="assets/images/vista.png" alt="Vista panorámica del residencial Bello Monte" />
+        <div class="hero__grain"></div>
+        <div class="hero__overlay"></div>
+        <canvas class="hero__particles" id="heroParticles" aria-hidden="true"></canvas>
+      </div>
+
+      <div class="hero__content">
+        <div class="hero__panel">
+          <div class="hero__eyebrow" data-hero-reveal>
+            <span class="hero__eyebrow-line"></span>
+            <span>Apartamento en Residencial Bello Monte · San Ramón de La Unión, Cartago</span>
+          </div>
+          <h1 class="hero__title" data-hero-reveal>
+            <span class="line"><span class="word">Naturaleza,</span></span>
+            <span class="line"><span class="word italic">seguridad</span></span>
+            <span class="line"><span class="word">y una vista</span></span>
+            <span class="line"><span class="word italic">que se siente.</span></span>
+          </h1>
+          <p class="hero__subtitle" data-hero-reveal>
+            ₡550.000 mensuales · 2 habitaciones · 2 baños completos · parqueo bajo techo
+          </p>
+          <p class="hero__lead" data-hero-reveal>
+            Residencial cerrado con una sola entrada y salida, aguja electrónica, casetilla con comunicación de entrada y salida, cámaras de alta definición 24/7 y un parque amplio, verde y silencioso. Todo esto, muy cerca de universidades, colegios, restaurantes, supermercados, farmacias, bancos y centros de salud.
+          </p>
+          <div class="hero__badges" data-hero-reveal>
+            <span>Una sola entrada y salida</span>
+            <span>Cámaras 24/7</span>
+            <span>Parque con vegetación</span>
+            <span>Mascotas permitidas</span>
+          </div>
+          <div class="hero__actions" data-hero-reveal>
+            <a href="#contacto" class="btn btn--primary" data-scroll>
+              <span>Agendar visita</span>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="#propiedad" class="btn btn--ghost" data-scroll>
+              <span>Ver detalles</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__scroll" data-hero-reveal aria-hidden="true">
+        <span>Desliza</span>
+        <div class="hero__scroll-line"></div>
+      </div>
+
+      <div class="hero__meta" data-hero-reveal>
+        <span>₡550.000 / mes</span>
+        <span>Visita privada</span>
+      </div>
+    </section>
+
+    <!-- ========== CAPÍTULO 1: EL ENTORNO ========== -->
+    <section class="chapter chapter--entorno" id="entorno" data-chapter="1">
+      <div class="chapter__header">
+        <span class="chapter__number">01</span>
+        <h2 class="chapter__title">
+          <span class="reveal-line">El entorno</span>
+          <span class="reveal-line italic">que protege.</span>
+        </h2>
+      </div>
+
+      <div class="entorno__grid">
+        <div class="entorno__text reveal-up">
+          <p class="lede">
+            Bello Monte no es un residencial más. Es un santuario residencial
+            enclavado en las colinas de San Ramón de Tres Ríos, donde el aire
+            se siente más limpio y el tiempo transcurre a otro ritmo.
+          </p>
+          <p>
+            Rodeado de vegetación abundante, montañas que enmarcan el cielo y
+            una comunidad pensada para la vida familiar, este lugar fue concebido
+            como un ecosistema: seguro, silencioso, verde y profundamente vivo.
+          </p>
+          <p>
+            Aquí la privacidad no se pide, se respira. La calma no se busca,
+            se encuentra.
+          </p>
+        </div>
+        <div class="entorno__visual">
+          <figure class="reveal-mask" data-speed="0.9">
+            <img src="assets/images/entorno-1.jpg" alt="Vista aérea del Ecoresidencial Bello Monte entre montañas" loading="lazy" />
+          </figure>
+          <figure class="reveal-mask entorno__visual--small" data-speed="1.1">
+            <img src="assets/images/entorno-2.jpg" alt="Vegetación y senderos del residencial" loading="lazy" />
+          </figure>
+        </div>
+      </div>
+
+      <div class="entorno__quote reveal-up">
+        <blockquote>
+          “Donde el entorno protege<br/>y la vista recompensa.”
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- ========== CAPÍTULO 2: SEGURIDAD ========== -->
+    <section class="chapter chapter--seguridad" id="seguridad" data-chapter="2">
+      <div class="chapter__header">
+        <span class="chapter__number">02</span>
+        <h2 class="chapter__title">
+          <span class="reveal-line">Seguridad</span>
+          <span class="reveal-line italic">que se controla,</span>
+          <span class="reveal-line">no se presume.</span>
+        </h2>
+      </div>
+
+      <div class="seguridad__visual">
+        <figure class="reveal-mask">
+          <img src="assets/images/acceso-1.jpg" alt="Acceso controlado del Residencial Bello Monte" loading="lazy" />
+        </figure>
+      </div>
+
+      <div class="seguridad__features">
+        <div class="feature reveal-up">
+          <span class="feature__num">01</span>
+          <h3>Una sola entrada y salida</h3>
+          <p>El residencial se controla desde un único acceso con aguja electrónica y monitoreo constante de ingresos y salidas.</p>
+        </div>
+        <div class="feature reveal-up">
+          <span class="feature__num">02</span>
+          <h3>Cámaras de alta definición</h3>
+          <p>Videovigilancia 24/7 en todo el residencial para reforzar la tranquilidad de cada día.</p>
+        </div>
+        <div class="feature reveal-up">
+          <span class="feature__num">03</span>
+          <h3>Casetilla con comunicación</h3>
+          <p>Control de acceso con casetilla de seguridad y comunicación directa de entrada y salida.</p>
+        </div>
+        <div class="feature reveal-up">
+          <span class="feature__num">04</span>
+          <h3>Un entorno silencioso</h3>
+          <p>Un residencial pensado para vivir tranquilo, con orden, privacidad y ambiente familiar.</p>
+        </div>
+      </div>
+
+      <div class="seguridad__visual seguridad__visual--alt">
+        <figure class="reveal-mask">
+          <img src="assets/images/acceso-2.jpg" alt="Vigilancia y control de acceso" loading="lazy" />
+        </figure>
+      </div>
+
+      <p class="seguridad__closing reveal-up">
+        La tranquilidad no es un lujo. Es el estándar.
+      </p>
+    </section>
+
+    <!-- ========== CAPÍTULO 3: NATURALEZA ========== -->
+    <section class="chapter chapter--naturaleza" id="naturaleza" data-chapter="3">
+      <div class="chapter__header">
+        <span class="chapter__number">03</span>
+        <h2 class="chapter__title">
+          <span class="reveal-line">Naturaleza</span>
+          <span class="reveal-line italic">viva.</span>
+        </h2>
+        <p class="chapter__subtitle reveal-up">
+          Senderos, jardines biológicos, mucha vegetación y un parque que se siente fresco, silencioso y sereno.
+        </p>
+      </div>
+
+      <div class="naturaleza__cinematic">
+        <div class="naturaleza__video-wrap reveal-mask media--contain">
+          <img class="naturaleza__video" src="assets/images/naturaleza-1.jpg" alt="Sendero rodeado de vegetación en el residencial" loading="lazy" />
+        </div>
+      </div>
+
+      <div class="naturaleza__mosaic">
+        <figure class="reveal-mask" data-speed="0.95">
+          <img src="assets/images/naturaleza-2.jpg" alt="Sendero entre vegetación" loading="lazy" />
+        </figure>
+        <figure class="reveal-mask" data-speed="1.05">
+          <img src="assets/images/naturaleza-3.jpg" alt="Jardín biológico del residencial" loading="lazy" />
+        </figure>
+      </div>
+
+      <div class="naturaleza__stats reveal-up">
+        <div class="stat">
+          <span class="stat__num" data-count="3">0</span>
+          <span class="stat__label">Senderos de distinto nivel</span>
+        </div>
+        <div class="stat">
+          <span class="stat__num" data-count="1">0</span>
+          <span class="stat__label">Jardín biológico</span>
+        </div>
+        <div class="stat">
+          <span class="stat__num" data-count="100" data-suffix="%">0</span>
+          <span class="stat__label">Aire de montaña</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CAPÍTULO 4: VIDA ACTIVA ========== -->
+    <section class="chapter chapter--vida" id="vida" data-chapter="4">
+      <div class="chapter__header">
+        <span class="chapter__number">04</span>
+        <h2 class="chapter__title">
+          <span class="reveal-line">Amenidades</span>
+          <span class="reveal-line italic">para moverse y compartir.</span>
+        </h2>
+      </div>
+
+      <div class="vida__grid">
+        <div class="vida__item reveal-up">
+          <figure><img src="assets/images/gimnasio.jpg" alt="Gimnasio al aire libre" loading="lazy" /></figure>
+          <h3>Gimnasio al aire libre</h3>
+          <p>Entrenar rodeado de verde aporta una experiencia más agradable y natural.</p>
+        </div>
+        <div class="vida__item reveal-up">
+          <figure><img src="assets/images/vida-2.jpg" alt="Área infantil y canchas" loading="lazy" /></figure>
+          <h3>Área infantil y canchas</h3>
+          <p>Fútbol, básquet y espacios para que la vida al aire libre ocurra de verdad.</p>
+        </div>
+        <div class="vida__item reveal-up">
+          <figure><img src="assets/images/entorno-2.jpg" alt="Parque y zonas comunes" loading="lazy" /></figure>
+          <h3>Parque y zonas comunes</h3>
+          <p>Senderos, vegetación y espacios comunes que invitan a caminar y respirar con calma.</p>
+        </div>
+      </div>
+
+      <p class="vida__closing reveal-up">
+        Una comunidad pensada para convivir.
+      </p>
+    </section>
+
+    <!-- ========== CAPÍTULO 5: UBICACIÓN ========== -->
+    <section class="chapter chapter--ubicacion" id="ubicacion" data-chapter="5">
+      <div class="chapter__header">
+        <span class="chapter__number">05</span>
+        <h2 class="chapter__title">
+          <span class="reveal-line">Ubicación</span>
+          <span class="reveal-line italic">estratégica.</span>
+        </h2>
+        <p class="chapter__subtitle reveal-up">
+          Tranquilidad residencial con acceso rápido a universidades, colegios, restaurantes, supermercados, farmacias, bancos y centros de salud.
+        </p>
+      </div>
+
+      <div class="ubicacion__grid">
+        <div class="ubicacion__map reveal-mask">
+          <img src="assets/images/ubicacion.jpg" alt="Ubicación estratégica en San Ramón de Tres Ríos" loading="lazy" />
+          <div class="ubicacion__pin" aria-hidden="true">
+            <span class="ubicacion__pin-dot"></span>
+            <span class="ubicacion__pin-ring"></span>
+          </div>
+        </div>
+
+        <ul class="ubicacion__list">
+          <li class="reveal-up"><span>Supermercados</span><em>2min</em></li>
+          <li class="reveal-up"><span>Farmacias y centros de salud</span><em>2-5min</em></li>
+          <li class="reveal-up"><span>Colegios y universidades</span><em>5-15min</em></li>
+          <li class="reveal-up"><span>Bancos y comercios</span><em>5-10min</em></li>
+          <li class="reveal-up"><span>Restaurantes y cafés</span><em>3-8min</em></li>
+          <li class="reveal-up"><span>Gasolinera</span><em>2min</em></li>
+          <li class="reveal-up"><span>Parque del Este</span><em>3min</em></li>
+          <li class="reveal-up"><span>Universidad de Costa Rica</span><em>18min</em></li>
+          <li class="reveal-up"><span>Curridabat</span><em>15min</em></li>
+          <li class="reveal-up"><span>Tres Ríos Centro</span><em>13min</em></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ========== CAPÍTULO 6: LA PROPIEDAD (REVEAL) ========== -->
+    <section class="chapter chapter--propiedad chapter--reveal" id="propiedad" data-chapter="6">
+      <div class="reveal__intro">
+        <span class="chapter__number">06</span>
+        <p class="reveal__eyebrow">El apartamento</p>
+        <h2 class="reveal__title">
+          <span class="reveal-line">Aquí está</span>
+          <span class="reveal-line italic">el motivo del recorrido.</span>
+        </h2>
+        <p class="reveal__desc">
+          Un apartamento amplio dentro de un residencial cerrado, con dos habitaciones, dos baños completos, balcón, cocina de concepto abierto, fuente de agua, chimenea y una vista abierta hacia la montaña de La Carpintera.
+        </p>
+      </div>
+
+      <div class="propiedad__hero">
+        <figure class="reveal-mask">
+          <img src="assets/images/propiedad-hero.jpg" alt="Vista privilegiada de la propiedad hacia la montaña de la Carpintera" loading="lazy" />
+        </figure>
+        <div class="propiedad__hero-caption">
+          <span>Vista a la montaña de la Carpintera</span>
+          <em>Residencial cerrado y elevado</em>
+        </div>
+      </div>
+
+      <div class="propiedad__story">
+        <div class="propiedad__story-text reveal-up">
+          <p class="lede">
+            Al cruzar el acceso controlado, la sensación cambia de inmediato: más silencio, más orden y más privacidad.
+          </p>
+          <p>
+            El apartamento combina amplitud, iluminación natural y una relación muy directa con el entorno verde del residencial. La idea es simple: vivir cómodo, seguro y muy cerca de todo lo que importa.
+          </p>
+        </div>
+
+        <div class="propiedad__feature reveal-mask">
+          <img src="assets/images/propiedad-ventanal.jpg" alt="Ventanal de 5.5 x 2 metros con vista a la montaña" loading="lazy" />
+          <div class="propiedad__feature-tag">
+            <span>Ventanal de 5.5 × 2 m</span>
+            <em>La vista entra a la casa</em>
+          </div>
+        </div>
+      </div>
+
+      <div class="propiedad__split">
+        <figure class="reveal-mask">
+          <img src="assets/images/propiedad-sala.jpg" alt="Área social de gran formato con chimenea y cascada de agua" loading="lazy" />
+        </figure>
+        <div class="propiedad__split-text reveal-up">
+          <h3>Un área social o studio habitación amplio y versátil</h3>
+          <p>
+            El cuarto principal integra chimenea, fuente de agua y un ventanal que abraza la vista. Su escala permite vivirla como sala, oficina, estudio o espacio flexible de uso diario.
+          </p>
+        </div>
+      </div>
+
+      <div class="propiedad__split propiedad__split--reverse">
+        <div class="propiedad__split-text reveal-up">
+          <h3>Cocina de concepto abierto</h3>
+          <p>
+            Una cocina conectada al área social, con barra estilo americano y excelente iluminación natural. El recorrido interior se siente cómodo, limpio y funcional.
+          </p>
+        </div>
+        <figure class="reveal-mask">
+          <img src="assets/images/propiedad-cocina.jpg" alt="Cocina con isla y vista al jardín" loading="lazy" />
+        </figure>
+      </div>
+
+      <div class="propiedad__balcon">
+        <figure class="reveal-mask">
+          <img src="assets/images/propiedad-balcon.jpg" alt="Balcón social con vista a la montaña y al parque" loading="lazy" />
+        </figure>
+        <div class="propiedad__balcon-text reveal-up">
+          <span class="propiedad__balcon-eyebrow">Balcón con vista</span>
+          <h3>Donde la vista descansa.</h3>
+          <p>
+            Un balcón abierto al paisaje, ideal para el café de la mañana o para cerrar el día con aire fresco y silencio.
+          </p>
+        </div>
+      </div>
+
+      <div class="propiedad__vista">
+        <figure class="reveal-mask">
+          <img src="assets/images/propiedad-vista.jpg" alt="Vista panorámica desde la propiedad" loading="lazy" />
+        </figure>
+        <blockquote class="propiedad__quote reveal-up">
+          “La amplitud se vive,
+          <br/>la tranquilidad se nota.”
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- ========== CAPÍTULO 7: DETALLES ========== -->
+    <section class="chapter chapter--detalles" id="detalles" data-chapter="7">
+      <div class="chapter__header">
+        <span class="chapter__number">07</span>
+        <h2 class="chapter__title">
+          <span class="reveal-line">Cada detalle,</span>
+          <span class="reveal-line italic">pensado.</span>
+        </h2>
+      </div>
+
+      <div class="detalles__grid">
+        <div class="detalle reveal-up">
+          <span class="detalle__icon">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M3 10l9-7 9 7v11H3V10z" stroke="currentColor" stroke-width="1.2"/></svg>
+          </span>
+          <h3>Parqueo bajo techo para 1 vehiculo y 2 adicionales sin techo.</h3>
+          <p>Protegido, privado y de acceso directo.</p>
+        </div>
+        <div class="detalle reveal-up">
+          <span class="detalle__icon">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M3 12h18M5 12V7a2 2 0 012-2h10a2 2 0 012 2v5M5 12v7h14v-7" stroke="currentColor" stroke-width="1.2"/></svg>
+          </span>
+          <h3>1 habitación + baño completo</h3>
+          <p>Íntima, luminosa y con todas las comodidades.</p>
+        </div>
+        <div class="detalle reveal-up">
+          <span class="detalle__icon">
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.2"/><path d="M8 12h8M12 8v8" stroke="currentColor" stroke-width="1.2"/></svg>
+          </span>
+          <h3>Baño adicional</h3>
+          <p>Un segundo baño completo para mayor comodidad.</p>
+        </div>
+        <div class="detalle reveal-up">
+          <span class="detalle__icon">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M4 20V8l8-5 8 5v12H4zM9 20v-6h6v6" stroke="currentColor" stroke-width="1.2"/></svg>
+          </span>
+          <h3>Cocina con isla</h3>
+          <p>Mueble, mueledero, muebles y espacio central de trabajo, mas un espacio para sala al frente.</p>
+        </div>
+        <div class="detalle reveal-up">
+          <span class="detalle__icon">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M4 18h16M6 18V9l6-4 6 4v9" stroke="currentColor" stroke-width="1.2"/><path d="M10 18v-5h4v5" stroke="currentColor" stroke-width="1.2"/></svg>
+          </span>
+          <h3>Sala-comedor</h3>
+          <p>Amplia, conectada, bañada de luz natural.</p>
+        </div>
+        <div class="detalle reveal-up">
+          <span class="detalle__icon">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M6 20V10l6-6 6 6v10M10 20v-5h4v5" stroke="currentColor" stroke-width="1.2"/><path d="M9 10h6" stroke="currentColor" stroke-width="1.2"/></svg>
+          </span>
+          <h3>Chimenea</h3>
+          <p>El calor que convierte una casa en hogar.</p>
+        </div>
+        <div class="detalle reveal-up">
+          <span class="detalle__icon">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 3c-3 4-5 6-5 9a5 5 0 0010 0c0-3-2-5-5-9z" stroke="currentColor" stroke-width="1.2"/></svg>
+          </span>
+          <h3>Cascada de agua</h3>
+          <p>Un sonido que acompaña y calma.</p>
+        </div>
+        <div class="detalle reveal-up">
+          <span class="detalle__icon">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4zM4 10h16M8 6v12" stroke="currentColor" stroke-width="1.2"/></svg>
+          </span>
+          <h3>Dos bodegas</h3>
+          <p>Espacio real para guardar lo que importa.</p>
+        </div>
+        <div class="detalle reveal-up">
+          <span class="detalle__icon">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 21V7l7-4 7 4v14M9 21v-6h6v6" stroke="currentColor" stroke-width="1.2"/></svg>
+          </span>
+          <h3>Área de lavado compartida</h3>
+          <p>Funcional, independiente y bien resuelta.</p>
+        </div>
+        <div class="detalle reveal-up">
+          <span class="detalle__icon">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M3 20c3-2 6-2 9 0s6 2 9 0M3 14c3-2 6-2 9 0s6 2 9 0M3 8c3-2 6-2 9 0s6 2 9 0" stroke="currentColor" stroke-width="1.2"/></svg>
+          </span>
+          <h3>Jardín privado</h3>
+          <p>Con acceso directo al parque biológico.</p>
+        </div>
+        <div class="detalle reveal-up">
+          <span class="detalle__icon">
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.2"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M5 19l1.5-1.5M17.5 6.5L19 5" stroke="currentColor" stroke-width="1.2"/></svg>
+          </span>
+          <h3>Muy iluminada</h3>
+          <p>Luz natural protagonista en cada espacio.</p>
+        </div>
+        <div class="detalle reveal-up">
+          <span class="detalle__icon">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 3v18M5 8c2-2 5-2 7 0M12 8c2-2 5-2 7 0M5 14c2-2 5-2 7 0M12 14c2-2 5-2 7 0" stroke="currentColor" stroke-width="1.2"/></svg>
+          </span>
+          <h3>Áreas verdes amplias</h3>
+          <p>Jardín, vegetación y conexión con el parque.</p>
+        </div>
+      </div>
+    </section>
+
+
+      <div class="detalles__gallery">
+        <div class="detalles__gallery-head reveal-up">
+          <span>Interiores de referencia</span>
+          <p>Los muebles y objetos mostrados en estas imágenes fueron creados con IA solo con fines decorativos.</p>
+        </div>
+
+        <div class="detalles__gallery-grid">
+          <figure class="interior-card reveal-mask media--contain">
+            <img src="assets/images/cuarto1.png" alt="Dormitorio interior" loading="lazy" />
+            <figcaption>Mobiliario y objetos creados con IA solo con fines decorativos.</figcaption>
+          </figure>
+          <figure class="interior-card reveal-mask media--contain">
+            <img src="assets/images/bano1.png" alt="Baño interior" loading="lazy" />
+            <figcaption>Mobiliario y objetos creados con IA solo con fines decorativos.</figcaption>
+          </figure>
+          <figure class="interior-card reveal-mask media--contain">
+            <img src="assets/images/bano1.1.png" alt="Baño interior adicional" loading="lazy" />
+            <figcaption>Mobiliario y objetos creados con IA solo con fines decorativos.</figcaption>
+          </figure>
+          <figure class="interior-card reveal-mask media--contain">
+            <img src="assets/images/bano2.png" alt="Baño con ducha" loading="lazy" />
+            <figcaption>Mobiliario y objetos creados con IA solo con fines decorativos.</figcaption>
+          </figure>
+          <figure class="interior-card reveal-mask media--contain">
+            <img src="assets/images/bano2.1.png" alt="Baño adicional" loading="lazy" />
+            <figcaption>Mobiliario y objetos creados con IA solo con fines decorativos.</figcaption>
+          </figure>
+          <figure class="interior-card reveal-mask media--contain">
+            <img src="assets/images/frente baño2.jpeg" alt="Ambiente interior" loading="lazy" />
+            <figcaption>Mobiliario y objetos creados con IA solo con fines decorativos.</figcaption>
+          </figure>
+        </div>
+      </div>
+
+
+    <!-- ========== CAPÍTULO 8: CONTACTO ========== -->
+    <section class="chapter chapter--contacto" id="contacto" data-chapter="8">
+      <div class="contacto__bg">
+        <figure class="reveal-mask"><img src="assets/images/propiedad-vista.jpg" alt="Vista final de la propiedad" loading="lazy" /></figure>
+      </div>
+
+      <div class="contacto__content">
+        <span class="chapter__number">08</span>
+        <h2 class="contacto__title">
+          <span class="reveal-line">¿Listo para</span>
+          <span class="reveal-line italic">vivir aquí?</span>
+        </h2>
+        <p class="contacto__desc reveal-up">
+          Agendamos una visita privada para que conozca el residencial, el apartamento y la vista completa con calma. También puede compartir este enlace en sus anuncios gratuitos para mostrar más detalles.
+        </p>
+
+        <div class="contacto__actions reveal-up">
+          <a href="https://wa.me/50672232295" class="btn btn--primary" target="_blank" rel="noopener">
+            <span>Escribir por WhatsApp</span>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="mailto:sebastian@abundia.io" class="btn btn--ghost">
+            <span>Enviar un correo</span>
+          </a>
+        </div>
+
+        <div class="contacto__info reveal-up">
+          <div>
+            <em>Correo</em>
+            <a href="mailto:sebastian@abundia.io">sebastian@abundia.io</a>
+          </div>
+          <div>
+            <em>WhatsApp</em>
+            <a href="https://wa.me/50672232295" target="_blank" rel="noopener">+506 7223 2295</a>
+          </div>
+          <div>
+            <em>Ubicación</em>
+            <span>San Ramón de Tres Ríos, Costa Rica</span>
+          </div>
+        </div>
+      </div>
+
+      <footer class="footer">
+        <span>© Ecoresidencial Bello Monte</span>
+        <span>Naturaleza, seguridad y amplitud.</span>
+      </footer>
+    </section>
+
+  </main>
+
+  <!-- ========== WHATSAPP FLOTANTE ========== -->
+  <a href="https://wa.me/50672232295" class="whatsapp-float" id="whatsappFloat" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+      <path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.7 5.5 2.1 7.9L.5 31.5l7.8-2c2.3 1.3 4.9 1.9 7.7 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5zm0 28.3c-2.5 0-4.9-.7-7-1.9l-.5-.3-4.6 1.2 1.2-4.5-.3-.5c-1.4-2.2-2.1-4.7-2.1-7.3 0-7.3 5.9-13.3 13.3-13.3 7.3 0 13.3 5.9 13.3 13.3 0 7.3-6 13.3-13.3 13.3zm7.3-10c-.4-.2-2.4-1.2-2.7-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.2 1.5-.2.2-.4.3-.8.1-.4-.2-1.7-.6-3.2-2-1.2-1.1-2-2.4-2.2-2.8-.2-.4 0-.6.2-.8.2-.2.4-.4.6-.7.2-.2.3-.4.4-.7.1-.3.1-.5 0-.7-.1-.2-.9-2.1-1.2-2.9-.3-.8-.6-.7-.9-.7h-.7c-.3 0-.7.1-1 .5-.4.4-1.4 1.3-1.4 3.3 0 1.9 1.4 3.8 1.6 4.1.2.3 2.8 4.3 6.8 6 .9.4 1.7.6 2.2.8.9.3 1.8.2 2.4.1.7-.1 2.4-1 2.7-1.9.3-1 .3-1.8.2-1.9-.1-.2-.4-.3-.8-.5z" fill="currentColor"/>
+    </svg>
+  </a>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
